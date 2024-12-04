@@ -1,2 +1,6 @@
 # DB-Classes-for-PHP+MySQL
- Database classes for PHP and MySQL. Created for efficiency and readablity.
+
+This project focuses on simplifying the database operation procedure into two steps.
+
+1.  Specifying your database data and parameters
+2.  Running the appropriate CRUD functions

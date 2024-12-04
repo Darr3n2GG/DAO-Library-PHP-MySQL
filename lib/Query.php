@@ -10,19 +10,20 @@ class Query {
 }
 
 class Conditions extends ArrayObject {
-    public function __call($func, $argv) {
-        if (!is_callable($func) || substr($func, 0, 6) !== 'array_') {
-            throw new BadMethodCallException(__CLASS__ . '->' . $func);
+    public function __call($function, $argv) {
+        if (!is_callable($function) || substr($function, 0, 6) !== 'array_') {
+            throw new BadMethodCallException(__CLASS__ . '->' . $function);
         }
-        return call_user_func_array($func, array_merge(array($this->getArrayCopy()), $argv));
+        return call_user_func_array($function, array_merge(array($this->getArrayCopy()), $argv));
     }
 }
 
 class Condition {
     public $column;
     public $operator;
-    public $direction;
+}
 
+class OperatorCondition extends Condition {
     public function __construct(string $column, string $operator) {
         $this->column = $column;
         $this->operator = $operator;
@@ -30,18 +31,22 @@ class Condition {
 }
 
 class NullCondition extends Condition {
-    // overrides parent class construct function
     public function __construct(string $column) {
         $this->column = $column;
     }
 }
 
-class OrderBy extends Condition {
+class OrderBy {
     const ASC = "ASC";
     const DESC = "DESC";
+    public $column;
+    public $direction;
 
-    // overrides parent class construct function
-    public function __construct($column, $direction) {
+    public function __construct(string $column, string $direction) {
+        if ($direction != OrderBy::ASC || $direction != OrderBy::DESC) {
+            throw new Exception("Invalid direction " . $direction . ". Use ASC or DESC.");
+        }
+
         $this->$column = $column;
         $this->direction = $direction;
     }
