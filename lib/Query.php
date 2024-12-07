@@ -43,11 +43,15 @@ class OrderBy {
     public $direction;
 
     public function __construct(string $column, string $direction) {
-        if ($direction != OrderBy::ASC || $direction != OrderBy::DESC) {
+        if ($this->checkValidDirection($direction)) {
             throw new Exception("Invalid direction " . $direction . ". Use ASC or DESC.");
         }
 
         $this->$column = $column;
         $this->direction = $direction;
+    }
+
+    private function checkValidDirection($direction) {
+        return $direction != OrderBy::ASC || $direction != OrderBy::DESC;
     }
 }
