@@ -3,7 +3,7 @@
     colors="true">
 
     <testsuites>
-        <testsuite name="DB classes for PHP and MySQL">
+        <testsuite name="DAO in PHP for MySQL CRUD operations">
             <directory>tests</directory>
         </testsuite>
     </testsuites>

@@ -1,24 +1,19 @@
 <?php
-// Core class for CRUD functions.
+// DAO class for CRUD functions.
 
 require_once("QueryBuilder.php");
 
-class Core {
+class DAO {
     private $conn;
 
     public function __construct(
-        $HOST = "localhost",
-        $USER = "root",
-        $PASSWORD = "",
-        $NAME = "condodb"
+        string $HOST,
+        string $USER,
+        string $PASSWORD,
+        string $NAME,
     ) {
         try {
-            $this->conn = new mysqli(
-                $HOST,
-                $USER,
-                $PASSWORD,
-                $NAME
-            );
+            $this->conn = mysqli_connect($HOST, $USER, $PASSWORD, $NAME);
             if ($this->conn->connect_error) {
                 throw new Exception("Failed to connect to MySQL: " . $this->conn->connect_error);
             }
@@ -28,8 +23,10 @@ class Core {
     }
 
     public function __destruct() {
-        if ($this->conn) {
+        try {
             $this->conn->close();
+        } catch (Exception $e) {
+            exit("Unable to close connection: " . $e->getMessage());
         }
     }
 
