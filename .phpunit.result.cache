@@ -1,1 +1,1 @@
-{"version":1,"defects":{"DAOTest::testConnectionInvalid":8,"DAOTest::testCreateWithInvalidQuery":8},"times":[]}
+{"version":1,"defects":{"DAOTest::testConnectionInvalid":8,"DAOTest::testCreateWithInvalidQuery":8,"DAOTest::testConnectionValid":8,"DAOTest::testCreateWithValidQuery":8},"times":{"DAOTest::testConnectionInvalid":0.001,"DAOTest::testCreateWithInvalidQuery":0.001,"DAOTest::testConnectionValid":0.002,"DAOTest::testCreateWithValidQuery":0.001}}

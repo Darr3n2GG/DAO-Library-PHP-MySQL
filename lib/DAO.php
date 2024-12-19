@@ -7,13 +7,13 @@ class DAO {
     private $conn;
 
     public function __construct(
-        string $HOST,
-        string $USER,
-        string $PASSWORD,
-        string $NAME,
+        string $hostname,
+        string $username,
+        string $password,
+        string $database,
     ) {
         try {
-            $this->conn = mysqli_connect($HOST, $USER, $PASSWORD, $NAME);
+            $this->conn = mysqli_connect($hostname, $username, $password, $database);
             if ($this->conn->connect_error) {
                 throw new Exception("Failed to connect to MySQL: " . $this->conn->connect_error);
             }
