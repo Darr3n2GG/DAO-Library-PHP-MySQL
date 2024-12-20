@@ -1,2 +1,2 @@
-# DB-Classes-for-PHP+MySQL
- Database classes for PHP and MySQL. Created for efficiency and readablity.
+# DAO Library in PHP for MySQL Databases
+Created for efficiency and readablity.
